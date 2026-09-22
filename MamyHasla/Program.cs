@@ -1,6 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 // maleListrey[0]
+
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+
 string[] maleLitery =
 [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w",
@@ -18,43 +22,54 @@ string[] znakiSpecjalne = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_"
 
 string GenerujHaslo()
 {
-    string haslo = "";
-    return haslo;
+    List<string> haslo = [];
+    
+    var random = new Random();
+    for (int i = 0; i < 3; i++)
+    {
+        var index = random.Next(0, maleLitery.Length);
+        var losowaLiterka = maleLitery[index];
+        haslo.Add(losowaLiterka);
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        var index = random.Next(0, duzeLitery.Length);
+        var losowaLiterka = duzeLitery[index];
+        haslo.Add(losowaLiterka);
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        var index = random.Next(0, znakiDiakrytyczne.Length);
+        var losowyZnak = znakiDiakrytyczne[index];
+        haslo.Add(losowyZnak);
+    }
+
+    for (int i = 0; i < 2; i++)
+    {
+        var index = random.Next(0, cyfry.Length);
+        var losowyZnak = cyfry[index];
+        haslo.Add(losowyZnak);
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        var index = random.Next(0, znakiSpecjalne.Length);
+        var losowyZnak = znakiSpecjalne[index];
+        haslo.Add(losowyZnak);
+    }
+
+    haslo.Shuffle();
+    
+    string gotoweHaslo = "";
+    for (int i = 0; i < haslo.Count; i++)
+    {
+        gotoweHaslo += haslo[i];
+    }
+
+    return gotoweHaslo;
 }
 
-
-var random = new Random();
-for (int i = 0; i < 3; i++)
-{
-    var index = random.Next(0, maleLitery.Length);
-    var losowaLiterka = maleLitery[index];
-    haslo += losowaLiterka;
-}
-for (int i = 0; i < 3; i++)
-{
-    var index = random.Next(0, duzeLitery.Length);
-    var losowaLiterka = duzeLitery[index];
-    haslo += losowaLiterka;
-}
-for (int i = 0; i < 2; i++)
-{
-    var index = random.Next(0, znakiDiakrytyczne.Length);
-    var losowyZnak = znakiDiakrytyczne[index];
-    haslo += losowyZnak;
-}
-
-for (int i = 0; i < 2; i++)
-{
-    var index = random.Next(0, cyfry.Length);
-    var losowyZnak = cyfry[index];
-    haslo += losowyZnak;
-}
-for (int i = 0; i < 2; i++)
-{
-    var index = random.Next(0, znakiSpecjalne.Length);
-    var losowyZnak = znakiSpecjalne[index];
-    haslo += losowyZnak;
-}
-
-Console.WriteLine($" jedna losowa mała literka {haslo }");
-
+Console.WriteLine($"Losowe haslo 1: {GenerujHaslo()}");
+Console.WriteLine($"Losowe haslo 2: {GenerujHaslo()}");
+Console.WriteLine($"Losowe haslo 3: {GenerujHaslo()}");
+Console.WriteLine($"Losowe haslo 4: {GenerujHaslo()}");
+Console.WriteLine($"Losowe haslo 5: {GenerujHaslo()}");
