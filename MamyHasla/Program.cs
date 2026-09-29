@@ -1,9 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-// maleListrey[0]
-
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
 
 string[] maleLitery =
 [
@@ -20,6 +16,13 @@ string[] cyfry = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 string[] znakiSpecjalne = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+"];
 
 
+/*
+ * nazwa funkcji: GenerujHaslo
+   opis funkcji: tworzy losowe hasło składające się z 12 znaków złożone z małych liter, dużych liter, znaków diakrytycznych, cyfr oraz znaków specjalnych.
+   parametry: brak
+   zwracany typ i opis: funkcja zwraca zmienną ciągu znaków zawierającą gotowe losowe hasło
+   pesel: 000000000
+ */
 string GenerujHaslo()
 {
     List<string> haslo = [];
